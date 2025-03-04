@@ -5,4 +5,5 @@ google-api-python-client
 pillow
 reportlab
 google
-fitz
+python-docx
+pymupdf
