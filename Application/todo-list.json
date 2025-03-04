@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "task": "singing",
+        "completed": false,
+        "assigned_to": [
+            "sam",
+            " hari"
+        ]
+    }
+]
