@@ -1,2 +1,0 @@
-# Intellexa-TechLead
-Intellexa-works
