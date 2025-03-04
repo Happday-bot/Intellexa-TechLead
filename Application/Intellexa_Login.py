@@ -52,7 +52,7 @@ st.markdown("""
 )
 
 # 🖼️ Display Logo
-st.image("https://raw.github.com/Happday-bot/Intellexa-TechLead/blob/main/Application/assests/logo.png", use_container_width=True)
+st.image("https://raw.githubusercontent.com/Happday-bot/Intellexa-TechLead/main/Application/assests/logo.png", use_container_width=True)
 
 # 🏠 **Intellexa Login Panel**
 st.markdown(
