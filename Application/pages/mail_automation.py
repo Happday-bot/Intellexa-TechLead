@@ -50,7 +50,7 @@ def send_emails():
                 
                 for recipient in recipients:
                     msg = MIMEMultipart()
-                    msg["From"] = sender_email
+                    msg["From"] = f"INTELLEXA REC <{sender_email}>"
                     msg["To"] = recipient["email"]
                     msg["Subject"] = email_subject
                     
