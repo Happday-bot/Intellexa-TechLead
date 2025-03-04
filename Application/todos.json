@@ -1,0 +1,37 @@
+[
+    {
+        "task": "send certificate to voluteers of resonance",
+        "completed": false,
+        "assigned_to": [
+            "Alfred sam"
+        ]
+    },
+    {
+        "task": "send certificates to women day event participants of round 1",
+        "completed": false,
+        "assigned_to": [
+            "Alfred sam"
+        ]
+    },
+    {
+        "task": "maths class work wednesday submission",
+        "completed": false,
+        "assigned_to": [
+            "Alfred sam"
+        ]
+    },
+    {
+        "task": "nptel completion",
+        "completed": false,
+        "assigned_to": [
+            "Alfred sam"
+        ]
+    },
+    {
+        "task": "assignment in OS before to submit on 5th of march",
+        "completed": false,
+        "assigned_to": [
+            "Alfred sam"
+        ]
+    }
+]
