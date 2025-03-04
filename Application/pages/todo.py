@@ -5,11 +5,10 @@ import base64
 from Intellexa_Login import login
 
 # GitHub Configuration
-GITHUB_TOKEN = "_____________________________"
-REPO_OWNER = "______________________________"
-REPO_NAME = "_______________________________"
-FILE_PATH = "_______________________________"
-
+GITHUB_TOKEN = st.secrets["api_git_todo"]
+REPO_OWNER = "Happday-bot"
+REPO_NAME = "Intellexa-TechLead"
+FILE_PATH = "Application/todo-list.json"
 # GitHub API URL
 GITHUB_API_URL = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{FILE_PATH}"
 HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
