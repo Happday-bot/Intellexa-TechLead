@@ -1,7 +1,7 @@
 [
     {
         "task": "singing",
-        "completed": false,
+        "completed": true,
         "assigned_to": [
             "sam",
             " hari"
