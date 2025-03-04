@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "task": "complete the report sheet",
+        "completed": false,
+        "assigned_to": [
+            "Alfred sam",
+            " aadithya",
+            " Lakshmi bhargavi",
+            " vishnupriya"
+        ]
+    }
+]
