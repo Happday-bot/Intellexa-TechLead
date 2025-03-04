@@ -53,7 +53,7 @@ def generate_certificate_pdf(data, font_path, positions, font_sizes, template_fi
 
 def send_email(sender_email, sender_password, recipient_email, email_subject, email_body, cert_buffer, file_name):
     msg = MIMEMultipart()
-    msg["From"] = sender_email
+    msg["From"] = f"INTELLEXA REC <{sender_email}>"
     msg["To"] = recipient_email
     msg["Subject"] = email_subject
     msg.attach(MIMEText(email_body, "plain"))
