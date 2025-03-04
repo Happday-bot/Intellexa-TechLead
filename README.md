@@ -1,1 +1,1 @@
-The contents to be added here should be displayed int he front page
+The contents to be added here should be displayed in the dashboard for efficient user access
