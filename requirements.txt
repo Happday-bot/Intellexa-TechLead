@@ -1,0 +1,8 @@
+streamlit
+pandas
+numpy
+google-api-python-client
+pillow
+reportlab
+google
+fitz
