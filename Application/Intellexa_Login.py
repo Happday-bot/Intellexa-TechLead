@@ -4,7 +4,7 @@ import streamlit as st
 # Hardcoded credentials (Use a secure approach in production)
 USERNAME = "admin"
 PASSWORD = "password123"
-
+# WILL USE st.secrets to hide this password and username
 
 
 
