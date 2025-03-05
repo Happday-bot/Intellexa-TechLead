@@ -10,11 +10,9 @@ from docx.enum.section import WD_ORIENT
 
 # Redirect to login if not authenticated
 if not st.session_state.get("authenticated", False):
-    # login()
-    # st.stop()
-    # url = "https://intellexa-techlead.streamlit.app/"  # Replace with your desired URL
-    # st.markdown(f'<meta http-equiv="refresh" content="0;url={url}">', unsafe_allow_html=True)
+    login()
     st.stop()
+
 
 def load_csv_file():
     st.info("Step 1: Please upload your CSV file.")
