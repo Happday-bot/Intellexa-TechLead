@@ -58,9 +58,9 @@ def create_word_document(df,image_path = None):
     
     # Add an image (if provided)
     # Download the image from URL if provided
-    if image_url:
+    if image_path:
         try:
-            response = requests.get(image_url)
+            response = requests.get(image_path)
             response.raise_for_status()  # Raise an error for bad responses (4xx, 5xx)
             image_stream = BytesIO(response.content)
             doc.add_picture(image_stream, width=Inches(6))  # Adjust width as needed
