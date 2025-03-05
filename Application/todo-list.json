@@ -8,5 +8,12 @@
             " Lakshmi bhargavi",
             " vishnupriya"
         ]
+    },
+    {
+        "task": "March 6 room",
+        "completed": false,
+        "assigned_to": [
+            "rakhul"
+        ]
     }
 ]
