@@ -7,8 +7,9 @@ from Intellexa_Login import login
 
 # Redirect to login if not authenticated
 if not st.session_state.get("authenticated", False):
-    login()
     st.stop()
+    login()
+
 
 def add_text_to_certificate(image, data, positions, fonts):
     draw = ImageDraw.Draw(image)
