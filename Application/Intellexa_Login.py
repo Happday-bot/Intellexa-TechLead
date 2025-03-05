@@ -2,11 +2,12 @@ import streamlit as st
 
 
 
-# Initialize session state
-if "authenticated" not in st.session_state:
-    st.session_state["authenticated"] = False
+
 
 def login():
+    # Initialize session state
+    if "authenticated" not in st.session_state:
+        st.session_state["authenticated"] = False
     USERNAME = "intellexa"
     PASSWORD = "@!3*@"
     """Simple authentication function."""
