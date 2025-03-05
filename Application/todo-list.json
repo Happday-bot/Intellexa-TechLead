@@ -15,5 +15,13 @@
         "assigned_to": [
             "rakhul"
         ]
+    },
+    {
+        "task": "Assign works to intellexa core for gitrequest",
+        "completed": false,
+        "assigned_to": [
+            "sivaraman",
+            " Alfred sam"
+        ]
     }
 ]
