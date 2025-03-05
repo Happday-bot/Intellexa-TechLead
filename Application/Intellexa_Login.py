@@ -7,8 +7,8 @@ if "authenticated" not in st.session_state:
     st.session_state["authenticated"] = False
 
 def login():
-    st.session_state["USERNAME"] = st.secrets["username"]
-    st.session_state["PASSWORD"] = st.secrets["password"]
+    USERNAME = st.secrets["username"]
+    PASSWORD = st.secrets["password"]
     """Simple authentication function."""
     st.markdown("<h2 style='text-align: center;'>🔒 Login to Intellexa</h2>", unsafe_allow_html=True)
     st.markdown("""
@@ -25,7 +25,7 @@ def login():
     password = st.text_input("🔑 Password", type="password")
 
     if st.button("Login"):
-        if username == st.session_state["USERNAME"] and password == st.session_state["PASSWORD"]:
+        if username == USERNAME and password == PASSWORD:
             st.session_state["authenticated"] = True
             st.success("✅ Login successful! Redirecting...")
             st.rerun()  # Refresh the page to reflect authentication state
