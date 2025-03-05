@@ -23,12 +23,5 @@
             "sivaraman",
             " Alfred sam"
         ]
-    },
-    {
-        "task": "hi",
-        "completed": true,
-        "assigned_to": [
-            "Media Team"
-        ]
     }
 ]
