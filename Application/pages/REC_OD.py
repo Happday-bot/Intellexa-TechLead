@@ -10,9 +10,8 @@ from docx.enum.section import WD_ORIENT
 
 # Redirect to login if not authenticated
 if not st.session_state.get("authenticated", False):
-    # login()
-    # st.stop()
-    st.warning("Wrong password")
+    login()
+    st.stop()
 
 def load_csv_file():
     st.info("Step 1: Please upload your CSV file.")
