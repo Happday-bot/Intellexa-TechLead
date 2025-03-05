@@ -23,5 +23,13 @@
             "sivaraman",
             " Alfred sam"
         ]
+    },
+    {
+        "task": "event on 6th march",
+        "completed": false,
+        "assigned_to": [
+            "padmapriya",
+            " vishnupriya"
+        ]
     }
 ]
