@@ -193,7 +193,7 @@ def main():
 
                 rec_students = rec_students.drop(columns=['college name','event name'])
 
-                word_file = create_word_document(rec_students,"https://raw.githubusercontent.com/Happday-bot/Intellexa-TechLead/main/Application/assests/enhanced_logo.png")
+                word_file = create_word_document(rec_students,"https://raw.githubusercontent.com/Happday-bot/Intellexa-TechLead/main/Application/assests/logo.png")
                 # image_url = "https://raw.githubusercontent.com/your-username/your-repo/main/logo.png"
                 # word_file = create_word_document(rec_students, image_path=image_url)
 
@@ -217,7 +217,7 @@ def main():
                 )
 
                 st.download_button("Download Processed CSV", csv_data, "rec_students.csv", "text/csv")
-                word_file = create_word_document(rec_students,"https://raw.githubusercontent.com/Happday-bot/Intellexa-TechLead/main/Application/assests/enhanced_logo.png")
+                word_file = create_word_document(rec_students,"https://raw.githubusercontent.com/Happday-bot/Intellexa-TechLead/main/Application/assests/logo.png")
                 # image_url = "https://raw.githubusercontent.com/your-username/your-repo/main/logo.png"
                 # word_file = create_word_document(rec_students, image_path=image_url)
 
