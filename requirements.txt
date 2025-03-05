@@ -7,3 +7,4 @@ reportlab
 google
 python-docx
 pymupdf
+requests
