@@ -26,7 +26,7 @@
     },
     {
         "task": "hi",
-        "completed": false,
+        "completed": true,
         "assigned_to": [
             "Media Team"
         ]
