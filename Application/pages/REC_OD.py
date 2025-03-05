@@ -57,9 +57,16 @@ def create_word_document(df,image_path = None):
     doc = Document()
     
     # Add an image (if provided)
-    if image_path:
-        doc.add_picture(image_path, width=Inches(6))  # Adjust width as needed
-        doc.add_paragraph("\n")  # Adds space after the image
+    # Download the image from URL if provided
+    if image_url:
+        try:
+            response = requests.get(image_url)
+            response.raise_for_status()  # Raise an error for bad responses (4xx, 5xx)
+            image_stream = BytesIO(response.content)
+            doc.add_picture(image_stream, width=Inches(6))  # Adjust width as needed
+            doc.add_paragraph("\n")  # Adds space after the image
+        except requests.exceptions.RequestException as e:
+            st.error(f"Failed to load image: {e}")
 
 
      # Add sender and recipient details
