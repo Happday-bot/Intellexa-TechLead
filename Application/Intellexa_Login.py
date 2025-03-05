@@ -7,8 +7,8 @@ if "authenticated" not in st.session_state:
     st.session_state["authenticated"] = False
 
 def login():
-    USERNAME = st.secrets["username"]
-    PASSWORD = st.secrets["password"]
+    USERNAME = "intellexa"
+    PASSWORD = "@!3*@"
     """Simple authentication function."""
     st.markdown("<h2 style='text-align: center;'>🔒 Login to Intellexa</h2>", unsafe_allow_html=True)
     st.markdown("""
