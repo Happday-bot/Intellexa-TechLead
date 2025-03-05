@@ -18,7 +18,7 @@
     },
     {
         "task": "Assign works to intellexa core for gitrequest",
-        "completed": false,
+        "completed": true,
         "assigned_to": [
             "sivaraman",
             " Alfred sam"
