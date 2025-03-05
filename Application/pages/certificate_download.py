@@ -109,6 +109,8 @@ import io
 from Intellexa_Login import login
 
 # Redirect to login if not authenticated
+if "authenticated" not in st.session_state:
+    st.session_state["authenticated"] = False
 if not st.session_state.get("authenticated", False):
     login()
     st.stop()
