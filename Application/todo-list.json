@@ -34,7 +34,7 @@
     },
     {
         "task": "kill akshaya",
-        "completed": false,
+        "completed": true,
         "assigned_to": [
             "Alfred sam"
         ]
