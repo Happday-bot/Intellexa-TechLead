@@ -31,5 +31,12 @@
             "padmapriya",
             " vishnupriya"
         ]
+    },
+    {
+        "task": "kill akshaya",
+        "completed": false,
+        "assigned_to": [
+            "Alfred sam"
+        ]
     }
 ]
