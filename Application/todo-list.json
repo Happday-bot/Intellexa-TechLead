@@ -19,7 +19,7 @@
     },
     {
         "task": "event on 6th march",
-        "completed": false,
+        "completed": true,
         "assigned_to": [
             "padmapriya",
             " vishnupriya"
