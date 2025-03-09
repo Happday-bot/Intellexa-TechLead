@@ -1,5 +1,10 @@
 import streamlit as st
 
+st.set_page_config(
+    page_title="INTELLEXA",
+    page_icon="https://example.com/my-favicon.ico"  # Replace with your favicon URL
+)
+
 # Initialize session state
 if "authenticated" not in st.session_state:
     st.session_state["authenticated"] = False
