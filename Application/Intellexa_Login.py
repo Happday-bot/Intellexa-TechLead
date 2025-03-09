@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="INTELLEXA",
-    page_icon="https://example.com/my-favicon.ico"  # Replace with your favicon URL
+    page_icon="https://github.com/Happday-bot/Intellexa-TechLead/blob/main/Application/assests/Untitled%20design.png"  # Replace with your favicon URL
 )
 
 # Initialize session state
