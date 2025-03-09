@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="INTELLEXA",
-    page_icon="https://raw.githubusercontent.com/Happday-bot/Intellexa-TechLead/main/Application/assests/Untitled%20design.png"
+    page_icon="https://raw.githubusercontent.com/Happday-bot/Intellexa-TechLead/main/Application/assests/Untitled%20design%20(1).png"
 )
 
 # Initialize session state
