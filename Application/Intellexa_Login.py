@@ -14,7 +14,7 @@ def login():
 
     USERNAME = st.secrets["username"]
     PASSWORD = st.secrets["password"]
-    """Simple authentication function."""
+
     st.markdown("<h2 style='text-align: center;'>🔒 Login to Intellexa</h2>", unsafe_allow_html=True)
     st.markdown("""
         <style>
