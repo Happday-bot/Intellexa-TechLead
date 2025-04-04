@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
-import streamlit as st
+import streamlit as s
 import io
 from Intellexa_Login import login
 
