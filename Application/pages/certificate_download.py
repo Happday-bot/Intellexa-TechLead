@@ -51,6 +51,10 @@ uploaded_csv = st.file_uploader("Upload CSV File", type=["csv"])
 file_type = st.selectbox("Select Output Format", ["jpg", "png"], index=0)
 uploaded_font = st.file_uploader("Upload Custom Font (TTF)", type=["ttf"])
 
+font_bytes = None
+if uploaded_font:
+    font_bytes = uploaded_font.read()  # Read once and store bytes
+
 positions = {}
 fonts = {}
 df = None
@@ -67,7 +71,11 @@ if uploaded_csv:
                     y = st.number_input(f"{column} Y Position", min_value=0, value=300)
                     font_size = st.number_input(f"{column} Font Size", min_value=10, max_value=100, value=40)
                     positions[column] = (x_start, y, x_end)
-                    fonts[column] = ImageFont.truetype(io.BytesIO(uploaded_font.read()), font_size) if uploaded_font else ImageFont.load_default()
+
+                    if font_bytes:
+                        fonts[column] = ImageFont.truetype(io.BytesIO(font_bytes), font_size)
+                    else:
+                        fonts[column] = ImageFont.load_default()
     except pd.errors.EmptyDataError:
         st.error("Error reading CSV: No data found. Please upload a valid CSV file.")
 
