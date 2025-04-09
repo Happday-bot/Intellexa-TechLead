@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "task": "event on 17th - firebase",
+        "completed": false,
+        "assigned_to": [
+            "Jagadeshwaran",
+            " Fareed Ahamed"
+        ]
+    }
+]
