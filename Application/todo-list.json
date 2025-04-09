@@ -6,5 +6,12 @@
             "Jagadeshwaran",
             " Fareed Ahamed"
         ]
+    },
+    {
+        "task": "event on 17th - software essentials",
+        "completed": false,
+        "assigned_to": [
+            "vishnupriya"
+        ]
     }
 ]
