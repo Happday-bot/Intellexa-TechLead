@@ -1,15 +1,5 @@
 [
     {
-        "task": "complete the report sheet",
-        "completed": false,
-        "assigned_to": [
-            "Alfred sam",
-            " aadithya",
-            " Lakshmi bhargavi",
-            " vishnupriya"
-        ]
-    },
-    {
         "task": "test sam's skill",
         "completed": false,
         "assigned_to": [
