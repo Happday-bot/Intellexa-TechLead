@@ -8,5 +8,12 @@
             " Lakshmi bhargavi",
             " vishnupriya"
         ]
+    },
+    {
+        "task": "test sam's skill",
+        "completed": false,
+        "assigned_to": [
+            "sivaraman"
+        ]
     }
 ]
