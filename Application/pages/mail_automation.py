@@ -32,56 +32,114 @@ def send_emails():
     
     st.session_state.attachment = st.file_uploader("Attach a file", type=None)
     
-    if st.button("Send Emails"):
-        if not all([sender_email, sender_password, email_subject, email_body]) or (not recipient_email and not csv_file):
-            st.error("Please provide all required inputs before sending emails.")
-            return
+    # if st.button("Send Emails"):
+    #     if not all([sender_email, sender_password, email_subject, email_body]) or (not recipient_email and not csv_file):
+    #         st.error("Please provide all required inputs before sending emails.")
+    #         return
         
-        recipients = []
-        if recipient_email:
-            recipients.append({"email": recipient_email.strip(), "name": "there"})
-        if csv_file:
-            df = pd.read_csv(csv_file)
-            for _, row in df.iterrows():
-                recipients.append({"email": row["email"].strip(), "name": row.get("name", "there").strip()})
+    #     recipients = []
+    #     if recipient_email:
+    #         recipients.append({"email": recipient_email.strip(), "name": "there"})
+    #     if csv_file:
+    #         df = pd.read_csv(csv_file)
+    #         for _, row in df.iterrows():
+    #             recipients.append({"email": row["email"].strip(), "name": row.get("name", "there").strip()})
         
-        try:
-            SMTP_SERVER = "smtp.gmail.com"
-            SMTP_PORT = 587
+    #     try:
+    #         SMTP_SERVER = "smtp.gmail.com"
+    #         SMTP_PORT = 587
             
-            with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
-                server.starttls()
-                server.login(sender_email, sender_password)
+    #         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+    #             server.starttls()
+    #             server.login(sender_email, sender_password)
                 
-                for recipient in recipients:
-                    msg = MIMEMultipart()
-                    msg["From"] = f"INTELLEXA REC <{sender_email}>"
-                    msg["To"] = recipient["email"]
-                    msg["Subject"] = email_subject
+    #             for recipient in recipients:
+    #                 msg = MIMEMultipart()
+    #                 msg["From"] = f"INTELLEXA REC <{sender_email}>"
+    #                 msg["To"] = recipient["email"]
+    #                 msg["Subject"] = email_subject
                     
-                    # Support HTML for formatting
-                    personalized_body = email_body.replace("{name}", recipient["name"])
-                    msg.attach(MIMEText(personalized_body, "html"))  # Change to "html"
+    #                 # Support HTML for formatting
+    #                 personalized_body = email_body.replace("{name}", recipient["name"])
+    #                 msg.attach(MIMEText(personalized_body, "html"))  # Change to "html"
 
-                    attachment = st.session_state.get("attachment", None)
+    #                 attachment = st.session_state.get("attachment", None)
                     
-                    if attachment is not None:
-                        file_data = attachment.read()
-                        part = MIMEBase("application", "octet-stream")
-                        part.set_payload(file_data)
-                        encoders.encode_base64(part)
-                        part.add_header("Content-Disposition", f"attachment; filename={attachment.name}")
-                        msg.attach(part)
+    #                 if attachment is not None:
+    #                     file_data = attachment.read()
+    #                     part = MIMEBase("application", "octet-stream")
+    #                     part.set_payload(file_data)
+    #                     encoders.encode_base64(part)
+    #                     part.add_header("Content-Disposition", f"attachment; filename={attachment.name}")
+    #                     msg.attach(part)
                     
-                    try:
-                        server.sendmail(sender_email, recipient["email"], msg.as_string())
-                        st.write(f"✅ Email sent to {recipient['email']}")
-                    except Exception as email_error:
-                        st.error(f"❌ Failed to send email to {recipient['email']}: {email_error}")
+    #                 try:
+    #                     server.sendmail(sender_email, recipient["email"], msg.as_string())
+    #                     st.write(f"✅ Email sent to {recipient['email']}")
+    #                 except Exception as email_error:
+    #                     st.error(f"❌ Failed to send email to {recipient['email']}: {email_error}")
             
-            st.success("🎉 All emails sent successfully!")
-        except Exception as e:
-            st.error(f"🚨 Error: {e}")
+    #         st.success("🎉 All emails sent successfully!")
+    #     except Exception as e:
+    #         st.error(f"🚨 Error: {e}")
+
+if st.button("Send Emails"):
+    if not all([sender_email, sender_password, email_subject, email_body]) or (not recipient_email and not csv_file):
+        st.error("Please provide all required inputs before sending emails.")
+        return
+
+    recipients = []
+
+    if recipient_email:
+        recipients.append({"email": recipient_email.strip(), "name": "there"})
+
+    if csv_file:
+        df = pd.read_csv(csv_file)
+        for _, row in df.iterrows():
+            # Convert all column values to string and trim whitespaces
+            recipient_data = {key: str(value).strip() for key, value in row.items()}
+            recipients.append(recipient_data)
+
+    try:
+        SMTP_SERVER = "smtp.gmail.com"
+        SMTP_PORT = 587
+        
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+            server.starttls()
+            server.login(sender_email, sender_password)
+
+            for recipient in recipients:
+                msg = MIMEMultipart()
+                msg["From"] = f"INTELLEXA REC <{sender_email}>"
+                msg["To"] = recipient["email"]
+                msg["Subject"] = email_subject
+
+                # Replace all {tokens} in the email body dynamically
+                personalized_body = email_body
+                for key, value in recipient.items():
+                    personalized_body = personalized_body.replace(f"{{{key}}}", value)
+
+                msg.attach(MIMEText(personalized_body, "html"))
+
+                attachment = st.session_state.get("attachment", None)
+                if attachment is not None:
+                    file_data = attachment.read()
+                    part = MIMEBase("application", "octet-stream")
+                    part.set_payload(file_data)
+                    encoders.encode_base64(part)
+                    part.add_header("Content-Disposition", f"attachment; filename={attachment.name}")
+                    msg.attach(part)
+
+                try:
+                    server.sendmail(sender_email, recipient["email"], msg.as_string())
+                    st.write(f"✅ Email sent to {recipient['email']}")
+                except Exception as email_error:
+                    st.error(f"❌ Failed to send email to {recipient['email']}: {email_error}")
+
+        st.success("🎉 All emails sent successfully!")
+    except Exception as e:
+        st.error(f"🚨 Error: {e}")
+
 
 if __name__ == "__main__":
     send_emails()
