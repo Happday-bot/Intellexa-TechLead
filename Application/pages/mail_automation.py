@@ -117,7 +117,7 @@ def send_emails():
                     # Replace all {tokens} in the email body dynamically
                     personalized_body = email_body
                     for key, value in recipient.items():
-                        personalized_body = personalized_body.replace(f"{key}", value)
+                        personalized_body = personalized_body.replace(f"{{{key}}}", value)
 
                     msg.attach(MIMEText(personalized_body, "html"))
 
