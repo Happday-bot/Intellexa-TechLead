@@ -90,15 +90,14 @@ def send_emails():
 
         recipients = []
 
+        # 1. Prepare recipient list
         if recipient_email:
-            recipients.append({"email": recipient_email.strip(), "name": "there"})
-
+            recipients.append({"email": recipient_email.strip(), "name": "there"})  # Fallback single
         if csv_file:
             df = pd.read_csv(csv_file)
             for _, row in df.iterrows():
-                # Convert all column values to string and trim whitespaces
-                recipient_data = {key: str(value).strip() for key, value in row.items()}
-                recipients.append(recipient_data)
+                row_data = {col: str(row[col]).strip() for col in df.columns}
+                recipients.append(row_data)
 
         try:
             SMTP_SERVER = "smtp.gmail.com"
@@ -107,20 +106,27 @@ def send_emails():
             with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
                 server.starttls()
                 server.login(sender_email, sender_password)
-
+            
                 for recipient in recipients:
+                    if "email" not in recipient:
+                        st.warning("Skipping row with no 'email' column.")
+                        continue
+                
                     msg = MIMEMultipart()
                     msg["From"] = f"INTELLEXA REC <{sender_email}>"
                     msg["To"] = recipient["email"]
                     msg["Subject"] = email_subject
 
-                    # Replace all {tokens} in the email body dynamically
-                    personalized_body = email_body
-                    for key, value in recipient.items():
-                        personalized_body = personalized_body.replace(f"{{{key}}}", str(value))
+                    # 2. Dynamic formatting using the whole row
+                    try:
+                        personalized_body = email_body.format(**recipient)
+                    except KeyError as e:
+                        st.error(f"Missing placeholder in CSV: {e}")
+                        continue
 
                     msg.attach(MIMEText(personalized_body, "html"))
 
+                    # 3. Attachment (optional)
                     attachment = st.session_state.get("attachment", None)
                     if attachment is not None:
                         file_data = attachment.read()
@@ -130,6 +136,7 @@ def send_emails():
                         part.add_header("Content-Disposition", f"attachment; filename={attachment.name}")
                         msg.attach(part)
 
+                    # 4. Send the mail
                     try:
                         server.sendmail(sender_email, recipient["email"], msg.as_string())
                         st.write(f"✅ Email sent to {recipient['email']}")
@@ -137,8 +144,10 @@ def send_emails():
                         st.error(f"❌ Failed to send email to {recipient['email']}: {email_error}")
 
             st.success("🎉 All emails sent successfully!")
+
         except Exception as e:
             st.error(f"🚨 Error: {e}")
+
 
 
 if __name__ == "__main__":
