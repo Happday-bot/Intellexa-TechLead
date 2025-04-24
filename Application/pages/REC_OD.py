@@ -37,7 +37,7 @@ def check_null_values(df):
         return False
 
 def process_data(df, event_type):
-    required_columns = ['name', 'register number', 'college name', 'year of study', 'department', 'section']
+    required_columns = ['name', 'register number', 'college name', 'year of study', 'department']
     if event_type == "Inter College Event":
         required_columns.extend(['event name', 'email address'])
     missing_columns = [col for col in required_columns if col not in df.columns]
