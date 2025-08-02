@@ -51,9 +51,9 @@ def generate_certificate_pdf(data, font_path, positions, font_sizes, template_fi
     buffer.seek(0)
     return buffer
 
-def send_email(sender_email, sender_password, recipient_email, email_subject, email_body, cert_buffer, file_name):
+def send_email(sender_org, sender_email, sender_password, recipient_email, email_subject, email_body, cert_buffer, file_name):
     msg = MIMEMultipart()
-    msg["From"] = f"INTELLEXA REC <{sender_email}>"
+    msg["From"] = f"{sender_org} <{sender_email}>"
     msg["To"] = recipient_email
     msg["Subject"] = email_subject
     msg.attach(MIMEText(email_body, "plain"))
@@ -88,6 +88,7 @@ def show_progress(current_value, final_value, progress_bar):
 
 
 st.title("Automated Certificate Generator & Email Sender")
+sender_org = st.selectbox("Select your organisation name", ["INTELLEXA REC", "CodeSapiens"])
 sender_email = st.text_input("Enter your email")
 sender_password = st.text_input("Enter your 16-digit app password", type="password")
 csv_file = st.file_uploader("Upload CSV file", type=["csv"])
@@ -145,7 +146,7 @@ if template_file and st.button("Generate & Send Certificates"):
             continue
         cert_buffer = generate_certificate_pdf(row, font_path, positions, font_sizes, template_file)
         file_name = f"certificate_{row['Name']}.pdf"
-        if send_email(sender_email, sender_password, recipient_email, email_subject, email_body, cert_buffer, file_name):
+        if send_email(sender_org, sender_email, sender_password, recipient_email, email_subject, email_body, cert_buffer, file_name):
             success_count += 1
             show_progress(success_count, final_value, progress_bar)
             time.sleep(0.1)  
@@ -162,3 +163,4 @@ if st.session_state["authenticated"]:
     if st.sidebar.button("🔓 Logout", key="logout"):
         st.session_state["authenticated"] = False
         st.rerun()  # Refresh the page to return to login
+
