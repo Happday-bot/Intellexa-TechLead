@@ -116,7 +116,7 @@ if csv_file:
             start_x = st.number_input(f"{column} Start X Position", min_value=0, value=200)
             end_x = st.number_input(f"{column} End X Position", min_value=0, value=600)
             y_pos = st.number_input(f"{column} Y Position", min_value=0, value=150)
-            font_size = st.number_input(f"{column} Font Size", min_value=10, max_value=100, value=40)
+            font_size = st.number_input(f"{column} Font Size", min_value=10, value=40)
             positions[column] = (start_x, end_x, y_pos)
             font_sizes[column] = font_size
 
@@ -163,4 +163,5 @@ if st.session_state["authenticated"]:
     if st.sidebar.button("🔓 Logout", key="logout"):
         st.session_state["authenticated"] = False
         st.rerun()  # Refresh the page to return to login
+
 
