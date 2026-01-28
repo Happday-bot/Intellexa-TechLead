@@ -88,7 +88,7 @@ def show_progress(current_value, final_value, progress_bar):
 
 
 st.title("Automated Certificate Generator & Email Sender")
-sender_org = st.selectbox("Select your organisation name", ["INTELLEXA REC", "CodeSapiens"])
+sender_org = st.selectbox("Select your organisation name", ["INTELLEXA REC", "CodeSapiens", "SheBuilds"])
 sender_email = st.text_input("Enter your email")
 sender_password = st.text_input("Enter your 16-digit app password", type="password")
 csv_file = st.file_uploader("Upload CSV file", type=["csv"])
@@ -163,5 +163,6 @@ if st.session_state["authenticated"]:
     if st.sidebar.button("🔓 Logout", key="logout"):
         st.session_state["authenticated"] = False
         st.rerun()  # Refresh the page to return to login
+
 
 
