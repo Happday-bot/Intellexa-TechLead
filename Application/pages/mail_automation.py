@@ -62,7 +62,7 @@ def send_emails():
                         continue
                 
                     msg = MIMEMultipart()
-                    msg["From"] = f"CodeSapiens<{sender_email}>"
+                    msg["From"] = f"Intellexa REC<{sender_email}>"
                     msg["To"] = recipient["email"]
                     msg["Subject"] = email_subject
 
